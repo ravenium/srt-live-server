@@ -16,12 +16,16 @@ FROM alpine:latest
 ENV LD_LIBRARY_PATH /lib:/usr/lib:/usr/local/lib64
 RUN apk update &&\
     apk upgrade &&\
-    apk add --no-cache openssl libstdc++
+    apk add --no-cache openssl libstdc++ &&\
+    adduser -D srt &&\
+    mkdir /etc/sls /logs &&\
+    chown srt /logs
 COPY --from=build /usr/local/bin/srt-* /usr/local/bin/
 COPY --from=build /usr/local/lib64/libsrt* /usr/local/lib64/
 COPY --from=build /tmp/srt-live-server/bin/* /usr/local/bin/
-RUN mkdir /etc/sls /logs
 COPY sls.conf /etc/sls/
 VOLUME /logs
 EXPOSE 2935/udp
+USER srt
+WORKDIR /home/srt
 ENTRYPOINT [ "sls", "-c", "/etc/sls/sls.conf"]
