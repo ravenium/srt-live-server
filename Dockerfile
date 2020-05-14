@@ -25,7 +25,7 @@ COPY --from=build /usr/local/lib64/libsrt* /usr/local/lib64/
 COPY --from=build /tmp/srt-live-server/bin/* /usr/local/bin/
 COPY sls.conf /etc/sls/
 VOLUME /logs
-EXPOSE 2935/udp
+EXPOSE 1935/udp
 USER srt
 WORKDIR /home/srt
 ENTRYPOINT [ "sls", "-c", "/etc/sls/sls.conf"]
