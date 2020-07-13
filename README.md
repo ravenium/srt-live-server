@@ -28,7 +28,7 @@ Example of Receiving of SRT in OBS:
 
 Errata, thoughts, future:
 * There are some things in the config that don't seem to work right yet, e.g. the on_event and status_url directives.  If anyone gets these working, please let me know!
-* The container builds on the latest SRT SDK at build time (1.4.1 as of this writing) and srt-live-server (1.4.5) so try rebuilding the container if you need a new feature in either that isn't here yete.  No guarantee future things won't break it.
+* The container builds on the latest SRT SDK at build time (1.4.1 as of this writing) and srt-live-server (1.4.8) so try rebuilding the container if you need a new feature in either that isn't here yete.  No guarantee future things won't break it.
 * You can map a docker volume so you can change your SLS config, then reload the container.  Add the following to your docker run line: `-v /path/to/your/local/sls.conf:/etc/sls/sls.conf`
 * I'm looking for a way to monitor log output and parse the results for feed start/stop to make a stats server similar to nginx-rtmp, so if any bash/python/grep ninjas want to give it a whirl, please submit a PR!
 
