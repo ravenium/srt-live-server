@@ -12,6 +12,9 @@ To build:
 To run from dockerhub:
 `docker run -d -p 1935:1935/udp ravenium/srt-live-server`
 
+To run via docker-compose:
+`mkdir -p logs; chmod a+w logs; docker-compose up`
+
 Notes on the sls.conf (the config for srt-live-server)
 * Set port to default of 1935/UDP.  Note that SRT doesn't technically have a default protocol port, so you will have to explicitly call this out in stream URLs (see below).  1935/TCP is what RTMP uses, so this makes it simpler to remember.
 * Set default latency to 200ms. (Nimble Streamer recommendeds no lower than 120ms no matter what, Haivision can do lower on hardware)  If your streams are getting "confetti" you may want to set this higher, but I've found this to be a safe default in using OBS and Larix SRT streams over a reasonable internet connection. Think of this as a "safety buffer" for connection burps.
