@@ -21,7 +21,7 @@ RUN apk update &&\
     mkdir /etc/sls /logs &&\
     chown srt /logs
 COPY --from=build /usr/local/bin/srt-* /usr/local/bin/
-COPY --from=build /usr/local/lib64/libsrt* /usr/local/lib64/
+COPY --from=build /usr/local/lib/libsrt* /usr/local/lib/
 COPY --from=build /tmp/srt-live-server/bin/* /usr/local/bin/
 COPY sls.conf /etc/sls/
 VOLUME /logs
