@@ -9,6 +9,7 @@ RUN git clone https://github.com/Haivision/srt.git
 WORKDIR /tmp/srt
 RUN ./configure && make && make install
 WORKDIR /tmp/srt-live-server
+RUN echo "#include <ctime>"|cat - slscore/common.cpp > /tmp/out && mv /tmp/out slscore/common.cpp
 RUN make
 
 # final stage
